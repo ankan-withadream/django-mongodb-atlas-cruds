@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+
+<body>
+    {% if updating_c %}
+    <form action="/update_comment/{{pk}}" method="post">
+    {% csrf_token %}
+    <!-- <input type="text" name="new_name" placeholder="new comment name"> -->
+    <input type="email" name="new_phone" placeholder="new comment phone">
+    <input type="text" name="new_address" placeholder="new comment address">
+    <button type="submit">Update comment</button>
+    
+    </form>
+        
+    {% else %}
+        {% if updating_o %}
+            <form action="/update_movie/{{pk}}" method="post">
+            {% csrf_token %}
+            <!-- <input type="text" name="title" placeholder="title"> -->
+            <input type="text" name="plot" placeholder="plot">
+            <input type="number" name="year" placeholder="year">
+            <input type="text" name="rated" value="rated">
+            <button type="submit">Update movie</button>
+            </form>
+        {% else %}
+            {% if updating_p %}
+            <form action="/update_user/{{pk}}" method="post">
+                {% csrf_token %}
+                <!-- <input type="text" name="new_name" placeholder="new  name"> -->
+                <input type="email" name="new_quantity" placeholder="new  email">
+                <input type="text" name="new_price" placeholder="new  password">
+                <button type="submit">Update User</button>
+                
+                </form>
+            {% endif %}
+        {% endif %}
+        
+    {% endif %}
+</body>
+</html>
